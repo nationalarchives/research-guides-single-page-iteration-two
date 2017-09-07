@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
+
+<!-- Basic navigation to guides within a category -->
 <ul>
     <li><a href="#second-world-war">Second World War</a>
         <ul>
@@ -24,6 +26,7 @@
     <li><a href="#records-for-current-legal-purposes">Records for current legal purposes</a></li>
 </ul>
 
+<!-- JSON representation of these relationships -->
 <pre>
     let categories = [
         {
@@ -73,6 +76,67 @@
         }
     ]
 </pre>
+
+<!-- Research guides within a section -->
+<h2 id="second-world-war">Second World War</h2>
+
+<div data-name="Recommendations for military honours and awards 1935-1990"
+     data-categories="second-world-war medals-and-awards"
+     data-recommended-guide-for-category="second-world-war"
+     data-keywords="army awards gallantry-medals honours medals second-world-war world-war-two"
+     data-all-records-available-online="true"
+     data-guide-href="http://www.nationalarchives.gov.uk/help-with-your-research/research-guides/recommendations-military-honours-awards-1935-1990/"
+     data-available-on-partner="false"
+     id="recommendations-military-honours-awards-1935-1990"
+     class="research-guide">
+    <h3>
+        <a href="http://www.nationalarchives.gov.uk/help-with-your-research/research-guides/recommendations-military-honours-awards-1935-1990/">
+            Recommendations for military honours and awards 1935-1990
+        </a>
+    </h3>
+</div>
+
+<div data-name="1939 register"
+     data-categories="second-world-war"
+     data-recommended-guide-for-category="false"
+     data-keywords="1939-register census population statistics"
+     data-all-records-available-online="true"
+     data-guide-href="http://www.nationalarchives.gov.uk/help-with-your-research/research-guides/1939-register/"
+     data-available-on-partner="find-my-past"
+     id="1939-register"
+     class="research-guide">
+    <h3>
+        <a href="http://www.nationalarchives.gov.uk/help-with-your-research/research-guides/1939-register/">1939
+            register</a>
+    </h3>
+</div>
+
+<!-- JSON representation of guides within a section -->
+
+<script>
+    let guides = [
+        {
+            name: 'Recommendations for military honours and awards 1935-1990',
+            categories: 'second-world-war medals-and-awards',
+            recommended_for_category: 'second-world-war',
+            keywords: ['army', 'awards', 'gallantry-medals', 'honours', 'medals', 'second-world-war', 'world-war-two'],
+            all_records_available_online: true,
+            guide_href: 'http://www.nationalarchives.gov.uk/help-with-your-research/research-guides/recommendations-military-honours-awards-1935-1990/',
+            data_available_on_partner: false,
+            id: 'recommendations-military-honours-awards-1935-1990'
+        },
+        {
+            name: '1939 register',
+            categories: 'second-world-war',
+            recommended_for_category: false,
+            keywords: ['1939-register', 'census', 'population', 'statistics'],
+            all_records_available_online: true,
+            guide_href: 'http://www.nationalarchives.gov.uk/help-with-your-research/research-guides/1939-register/',
+            data_available_on_partner: 'find-my-past',
+            id: '1939-register'
+        }
+    ]
+</script>
 
 </body>
 </html>
