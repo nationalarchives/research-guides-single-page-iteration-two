@@ -18,6 +18,17 @@ To replicate existing functionality, the application should allow users to:
 
 The relationship between these entities is shown in ![Image of Yaktocat](uml-class-diagram.png)
 
+### HTML structure required to support this
+
+To achieve this there are specific needs for the HTML delivered by WordPress. Initial thoughts are that this would be two distinct structures: 
+
+* One that represents the parent/child relationship between **subjects**
+* One that represents the whether a guide is for records that are all online, and the relationship between:
+    * A research guide and a subject (incl. whether the guide is 'recommended' for a particular subject)
+    * A research guide and keywords
+    
+A [proposed HTML structure](proposed-html-structure.html) is included in this repository (and will be updated as necessary).
+
 ## Working with this repository
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.

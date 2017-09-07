@@ -2,9 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<ul>
+    <li><a href="#second-world-war">Second World War</a>
+        <ul>
+            <li><a href="#army">Army</a></li>
+            <li><a href="#births-marriages-and-deaths">Births, Marriages and Deaths</a></li>
+            <li><a href="#foreign-and-colonial-affairs">Foreign and colonial affairs</a></li>
+        </ul>
+    </li>
+    <li><a href="#social-and-cultural-history">Social and cultural history</a>
+        <ul>
+            <li><a href="#cultural">Cultural</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#health">Health</a></li>
+            <li><a href="#land">Land</a></li>
+        </ul>
+    </li>
+    <li><a href="#records-for-current-legal-purposes">Records for current legal purposes</a></li>
+</ul>
+
+<pre>
+    let categories = [
+        {
+            name: 'Second world war',
+            key: 'second-world-war',
+            parent: false
+        },
+        {
+            name: 'Army',
+            key: 'army',
+            parent: 'second-world-war'
+        },
+        {
+            name: 'Births, marriages and deaths',
+            key: 'births-marriages-and-deaths', // Notice that the comma is omitted
+            parent: 'second-world-war'
+        },
+        {
+            name: 'Social and cultural history',
+            key: 'social-and-cultural-history',
+            parent: false
+        },
+        {
+            name: 'Cultural',
+            key: 'cultural',
+            parent: 'social-and-cultural-history'
+        },
+        {
+            name: 'Education',
+            key: 'education',
+            parent: 'social-and-cultural-history'
+        },
+        {
+            name: 'Health',
+            key: 'health',
+            parent: 'social-and-cultural-history'
+        },
+        {
+            name: 'land',
+            key: 'land',
+            parent: 'social-and-cultural-history'
+        },
+        {
+            name: 'Records for current legal purposes',
+            key: 'records-for-current-legal-purposes',
+            parent: false
+        }
+    ]
+</pre>
+
 </body>
 </html>
