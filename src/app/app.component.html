@@ -1,3 +1,9 @@
 <h1>
     {{title}}
 </h1>
+
+<ul>
+    <li *ngFor="let researchGuide of researchGuides">
+        <app-guide-detail [guide]="researchGuide"></app-guide-detail>
+    </li>
+</ul>

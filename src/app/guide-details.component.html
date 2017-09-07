@@ -1,0 +1,9 @@
+<a href="{{guide.guide_href}}">{{guide.name}}</a>
+<h2>Categories</h2>
+<ul>
+    <li *ngFor="let category of guide.categories">{{ category }}</li>
+</ul>
+<h2>Keyword</h2>
+<ul>
+    <li *ngFor="let keyword of guide.keywords">{{ keyword }}</li>
+</ul>
