@@ -1,4 +1,4 @@
-import {Guide} from './guide';
+import {Guide} from '../guide';
 
 export const RESEARCH_GUIDES: Guide[] = [
     {

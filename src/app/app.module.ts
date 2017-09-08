@@ -1,8 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-import {AppComponent} from './app.component';
-import {GuideDetailsComponent} from "./guide-details.component";
+import {AppComponent} from './components/app/app.component';
+import {GuideDetailsComponent} from "./components/guide-details/guide-details.component";
 
 @NgModule({
     declarations: [

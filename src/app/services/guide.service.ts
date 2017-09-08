@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Guide } from './guide';
+import { Guide } from '../guide';
 
 import { RESEARCH_GUIDES } from './mock-guides';
 

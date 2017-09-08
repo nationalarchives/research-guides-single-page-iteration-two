@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { GuideService } from './guide.service';
+import { GuideService } from '../../services/guide.service';
 
 @Component({
     selector: 'app-root',
@@ -14,7 +14,7 @@ export class AppComponent {
     researchGuides;
 
     getGuides(): void {
-        this.researchGuides = this.guideService.getGuides()
+        this.researchGuides = this.guideService.getGuides();
     }
 
     constructor(private guideService: GuideService) {
