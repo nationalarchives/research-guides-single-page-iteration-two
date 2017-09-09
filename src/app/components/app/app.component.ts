@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {GuideService} from '../../services/guide.service';
 
@@ -9,21 +9,13 @@ import {GuideService} from '../../services/guide.service';
     providers: [GuideService]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'Research guides application';
-    researchGuides;
-    nameSearch = '';
 
-    onSearchStringUpdate(searchString: string) {
-        console.log('The observed string is : ' + searchString);
-        this.nameSearch = searchString;
+    constructor() {
     }
 
-    getGuides(): void {
-        this.researchGuides = this.guideService.getGuides();
+    ngOnInit() {
     }
 
-    constructor(private guideService: GuideService) {
-        this.getGuides();
-    }
 }

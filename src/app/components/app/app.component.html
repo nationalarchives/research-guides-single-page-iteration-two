@@ -1,9 +1,6 @@
 <h1>
     {{title}}
 </h1>
-<app-name-search (searchStringUpdated)="onSearchStringUpdate($event)"></app-name-search>
-<ul>
-    <li *ngFor="let researchGuide of (researchGuides | nameSearchPipe: nameSearch)">
-        <app-guide-detail [guide]="researchGuide"></app-guide-detail>
-    </li>
-</ul>
+<a routerLink="/">Home</a>
+<a routerLink="/guides">Guides</a>
+<router-outlet></router-outlet>

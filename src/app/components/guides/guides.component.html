@@ -1,0 +1,6 @@
+<app-name-search (searchStringUpdated)="onSearchStringUpdate($event)"></app-name-search>
+<ul>
+    <li *ngFor="let researchGuide of (researchGuides | nameSearchPipe: nameSearch)">
+        <app-guide-detail [guide]="researchGuide"></app-guide-detail>
+    </li>
+</ul>
