@@ -14,6 +14,7 @@ import {NameSearchPipe} from './name-search.pipe';
 import { NameSearchNumberFoundPipe } from './name-search-number-found.pipe';
 import { KeywordsComponent } from './components/keywords/keywords.component';
 import { KeywordStartingLetterPipe } from './keyword-starting-letter.pipe';
+import { GuidesWithKeywordPipe } from './guides-with-keyword.pipe';
 
 const routes: Routes = [
     {path: '', component: GuidesComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
         NameSearchPipe,
         NameSearchNumberFoundPipe,
         KeywordsComponent,
-        KeywordStartingLetterPipe
+        KeywordStartingLetterPipe,
+        GuidesWithKeywordPipe
     ],
     imports: [
         BrowserModule,

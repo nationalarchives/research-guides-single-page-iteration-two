@@ -27,8 +27,10 @@
         <div class="breather clr">
             <div id="desktop-keywords">
                 <ul class="no-bullet border-none keywords-selectable clr">
-                    <li *ngFor="let keyword of (keywords | keywordStartingLetter: currentlySelectedStartingLetter)">{{
-                        keyword.split('-').join(' ') }}
+                    <li *ngFor="let keyword of (keywords | keywordStartingLetter: currentlySelectedStartingLetter)">
+                        <button (click)="setSelectedKeyword($event)">
+                            {{ keyword.split('-').join(' ') }}
+                        </button>
                     </li>
                 </ul>
             </div><!-- end desktop-keywords -->
@@ -37,3 +39,14 @@
 
     </div>
 </div>
+<div class="breather">
+    <h3 class="margin-none float-left width-full-to-auto">How to look for records of...</h3>
+    <div class="resource-results clr">
+        <!-- results go here -->
+        <ul>
+            <li *ngFor="let researchGuide of (researchGuides | guidesWithKeyword: currentlySelectedKeyword)">
+                <app-guide-detail [guide]="researchGuide"></app-guide-detail>
+            </li>
+        </ul>
+    </div><!-- end resource-results -->
+</div><!-- end breather -->

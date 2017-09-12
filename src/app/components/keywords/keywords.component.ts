@@ -15,6 +15,7 @@ export class KeywordsComponent implements OnInit {
     keywords;
     keywordStartingLetterAvailability;
     currentlySelectedStartingLetter;
+    currentlySelectedKeyword;
 
     getGuides(): void {
         this.researchGuides = this.guideService.getGuides();
@@ -62,7 +63,12 @@ export class KeywordsComponent implements OnInit {
     selectStartingLetter(event): void {
         event.preventDefault();
         this.currentlySelectedStartingLetter = event.target.innerText;
-        console.log(this.currentlySelectedStartingLetter);
+        this.currentlySelectedKeyword = undefined;
+    }
+
+    setSelectedKeyword(event): void {
+        event.preventDefault();
+        this.currentlySelectedKeyword = event.target.innerText;
     }
 
     constructor(private guideService: GuideService) {
