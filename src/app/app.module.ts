@@ -14,7 +14,7 @@ import {NameSearchPipe} from './name-search.pipe';
 import { NameSearchNumberFoundPipe } from './name-search-number-found.pipe';
 
 const routes: Routes = [
-    {path: 'guides', component: GuidesComponent}
+    {path: '', component: GuidesComponent}
 ];
 
 @NgModule({
