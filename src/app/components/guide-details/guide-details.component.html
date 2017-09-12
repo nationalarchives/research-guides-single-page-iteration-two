@@ -1,9 +1,8 @@
-<a href="{{guide.guide_href}}">{{guide.name}}</a>
-<h2>Categories</h2>
-<ul>
-    <li *ngFor="let category of guide.categories">{{ category }}</li>
-</ul>
-<h2>Keyword</h2>
-<ul>
-    <li *ngFor="let keyword of guide.keywords">{{ keyword }}</li>
-</ul>
+<a href="{{guide.guide_href}}" class="guide-heading">{{guide.name}}</a><br>
+<span class="text-smallest ">Keywords: </span>
+<span class="tag" *ngFor="let keyword of guide.keywords">{{ keyword }}</span>
+<span class="tag"><a
+        href="/help-with-your-research/research-guides-keywords/?show=keywords&amp;keyword-letter=a&amp;keyword=america#guidance"
+        title="Show all research guides tagged america">america</a></span><br>
+<span class="text-smallest">Subjects:</span>
+<span class="tag" *ngFor="let category of guide.categories">{{ category }}</span>

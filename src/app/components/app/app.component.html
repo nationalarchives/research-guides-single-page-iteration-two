@@ -1,6 +1,19 @@
-<h1>
-    {{title}}
-</h1>
-<a routerLink="/">Home</a>
-<a routerLink="/guides">Guides</a>
+<div class="row margin-none">
+    <div class="col starts-at-full box clr margin-none ">
+        <div class="heading-holding-banner clr">
+            <h1><span><span>{{ title }}</span></span></h1>
+            <div class="utilities float-left-to-right pad-small hue-grey-lightest">
+                <ul class="text-small">
+                    <li class="text-blue">
+                        <a routerLink="/">Home</a>
+                    </li>
+                    <li>
+                        <a routerLink="/guides">All research guides</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 <router-outlet></router-outlet>

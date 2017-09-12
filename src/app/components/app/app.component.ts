@@ -10,7 +10,7 @@ import {GuideService} from '../../services/guide.service';
 })
 
 export class AppComponent implements OnInit {
-    title = 'Research guides application';
+    title = 'Research guides';
 
     constructor() {
     }

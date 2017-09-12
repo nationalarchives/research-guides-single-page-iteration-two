@@ -1,6 +1,58 @@
-<app-name-search (searchStringUpdated)="onSearchStringUpdate($event)"></app-name-search>
-<ul>
-    <li *ngFor="let researchGuide of (researchGuides | nameSearchPipe: nameSearch)">
-        <app-guide-detail [guide]="researchGuide"></app-guide-detail>
-    </li>
-</ul>
+<div class="row">
+    <div class="col-starts-at-full box clr">
+        <div class="two-thirds pad-horizontal-large margin-none margin-bottom-large">
+            <div class="pad-top-medium pad-bottom-large">
+                <p>
+                    Our research guides can help you uncover the history of a place, a person or explore a particular
+                    historical subject. Each guide tells you where you can find, access and understand the relevant
+                    records.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- START LOCAL FILTERS -->
+    <div class="col starts-at-full ends-at-one-third bg-light-grey clr">
+        <div class="category-filter">
+            <div class="breather pad-top-medium">
+                <h2>
+                    Filter by guide name </h2>
+            </div><!-- end breather -->
+        </div><!-- end category-filter -->
+        <div id="toggle-container" class="hue-grey-light pad-bottom-large">
+            <div class="category-filter-footer"></div>
+            <div class="pad-horizontal-large">
+                <div id="research-guidance-subcategories">
+                    <div class="filter-container clr">
+                        <app-name-search (searchStringUpdated)="onSearchStringUpdate($event)"></app-name-search>
+                    </div><!-- end filter-container -->
+                </div><!-- end research-guidance-subcategories -->
+            </div><!-- end breather -->
+        </div>
+        <!-- end toggle container -->
+    </div><!-- end col -->
+    <!-- END LOCAL FILTERS -->
+    <!-- START RESULTS -->
+    <div id="reload-marker" class="col starts-at-full ends-at-two-thirds box margin-none clr">
+        <div class="heading-holding-banner">
+            <h2><span><span>{{researchGuides.length}} guides available</span></span></h2>
+        </div><!-- end heading-holding-banner -->
+        <div class="breather">
+            <h3 class="margin-none float-left width-full-to-auto">How to look for records of...</h3>
+            <div class="resource-results clr">
+                <!-- results go here -->
+                <ul>
+                    <li *ngFor="let researchGuide of (researchGuides | nameSearchPipe: nameSearch)">
+                        <app-guide-detail [guide]="researchGuide"></app-guide-detail>
+                    </li>
+                </ul>
+            </div><!-- end resource-results -->
+        </div><!-- end breather -->
+    </div><!-- end col -->
+    <!-- END RESULTS -->
+</div>
+
+
+
