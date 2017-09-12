@@ -12,9 +12,12 @@ import {GuideService} from './services/guide.service';
 
 import {NameSearchPipe} from './name-search.pipe';
 import { NameSearchNumberFoundPipe } from './name-search-number-found.pipe';
+import { KeywordsComponent } from './components/keywords/keywords.component';
+import { KeywordStartingLetterPipe } from './keyword-starting-letter.pipe';
 
 const routes: Routes = [
-    {path: '', component: GuidesComponent}
+    {path: '', component: GuidesComponent},
+    {path: 'keywords', component: KeywordsComponent}
 ];
 
 @NgModule({
@@ -24,7 +27,9 @@ const routes: Routes = [
         GuideDetailsComponent,
         NameSearchComponent,
         NameSearchPipe,
-        NameSearchNumberFoundPipe
+        NameSearchNumberFoundPipe,
+        KeywordsComponent,
+        KeywordStartingLetterPipe
     ],
     imports: [
         BrowserModule,

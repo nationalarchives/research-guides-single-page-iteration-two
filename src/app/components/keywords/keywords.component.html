@@ -1,0 +1,39 @@
+<div class="box"><!-- PAGE HEADING and INTRODUCTION -->
+    <div class="breather">
+        <h2 class="increase margin-bottom-medium">A-Z index</h2>
+    </div><!-- end breather -->
+
+    <!-- STEP 1 - A-Z -->
+    <div class="width-full margin-none hue-grey-light clr">
+        <div class="breather">
+            <h3 class="margin-none pad-large">Step 1 - Select a letter to browse keywords</h3>
+            <div class="disc-container">
+                <ul id="menu-disc">
+                    <li *ngFor="let startingLetter of keywordStartingLetterAvailability">
+                        <a *ngIf="startingLetter.available"
+                           [class.selected]="startingLetter.letter === currentlySelectedStartingLetter.toLowerCase()"
+                           href="#" (click)="selectStartingLetter($event)">{{ startingLetter.letter | uppercase }}</a>
+                        <span class="disabled"
+                              *ngIf="!(startingLetter.available)">{{startingLetter.letter | uppercase}}</span>
+                    </li>
+                    <li><span class="disabled">X</span></li>
+                </ul>
+            </div><!-- end disc-container -->
+        </div><!-- end breather -->
+    </div><!-- end width-full -->
+    <div id="step-two" class="width-full bg-blue margin-none step-two">
+        <h3 class="margin-none pad-large pad-bottom-none">Step 2 - Select a keyword starting with {{
+            currentlySelectedStartingLetter }}</h3>
+        <div class="breather clr">
+            <div id="desktop-keywords">
+                <ul class="no-bullet border-none keywords-selectable clr">
+                    <li *ngFor="let keyword of (keywords | keywordStartingLetter: currentlySelectedStartingLetter)">{{
+                        keyword.split('-').join(' ') }}
+                    </li>
+                </ul>
+            </div><!-- end desktop-keywords -->
+            <!-- end mobile-keywords -->
+        </div><!-- end breather -->
+
+    </div>
+</div>

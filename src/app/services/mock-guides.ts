@@ -15,7 +15,7 @@ export const RESEARCH_GUIDES: Guide[] = [
         name: '1939 register',
         categories: ['second-world-war'],
         recommended_for_category: false,
-        keywords: ['1939-register', 'census', 'population', 'statistics'],
+        keywords: ['1939-register', 'census', 'population', 'statistics', 'medals'],
         all_records_available_online: true,
         guide_href: 'http://www.nationalarchives.gov.uk/help-with-your-research/research-guides/1939-register/',
         data_available_on_partner: 'find-my-past',
