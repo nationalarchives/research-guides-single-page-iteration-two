@@ -11,6 +11,7 @@ import {NameSearchComponent} from './components/name-search/name-search.componen
 import {GuideService} from './services/guide.service';
 
 import {NameSearchPipe} from './name-search.pipe';
+import { NameSearchNumberFoundPipe } from './name-search-number-found.pipe';
 
 const routes: Routes = [
     {path: 'guides', component: GuidesComponent}
@@ -22,7 +23,8 @@ const routes: Routes = [
         GuidesComponent,
         GuideDetailsComponent,
         NameSearchComponent,
-        NameSearchPipe
+        NameSearchPipe,
+        NameSearchNumberFoundPipe
     ],
     imports: [
         BrowserModule,

@@ -18,7 +18,8 @@
         <div class="category-filter">
             <div class="breather pad-top-medium">
                 <h2>
-                    Filter by guide name </h2>
+                    Filter guides by name </h2>
+                <span>Enter a term below</span>
             </div><!-- end breather -->
         </div><!-- end category-filter -->
         <div id="toggle-container" class="hue-grey-light pad-bottom-large">
@@ -37,7 +38,18 @@
     <!-- START RESULTS -->
     <div id="reload-marker" class="col starts-at-full ends-at-two-thirds box margin-none clr">
         <div class="heading-holding-banner">
-            <h2><span><span>{{researchGuides.length}} guides available</span></span></h2>
+            <h2>
+                <span>
+                    <span>
+                        <span [ngPlural]="(researchGuides | nameSearchNumberFound: nameSearch)">
+                            <ng-template ngPluralCase="=0">No guides available</ng-template>
+                            <ng-template ngPluralCase="=1">{{ researchGuides | nameSearchNumberFound: nameSearch }} guide available</ng-template>
+                            <ng-template ngPluralCase="other">{{ researchGuides | nameSearchNumberFound: nameSearch }} guides available</ng-template>
+                        </span>
+                        <span *ngIf="nameSearch.length > 0">{{ 'with "' + nameSearch + '" in the title'}}</span>
+                    </span>
+                </span>
+            </h2>
         </div><!-- end heading-holding-banner -->
         <div class="breather">
             <h3 class="margin-none float-left width-full-to-auto">How to look for records of...</h3>

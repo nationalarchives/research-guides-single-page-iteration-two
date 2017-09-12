@@ -12,7 +12,6 @@ export class NameSearchComponent {
 
     changeSearchString(event: any) {
         let value: string = event.srcElement.value;
-        console.log('The emitted value is : ' + value);
         this.searchStringUpdated.emit(value);
     }
 

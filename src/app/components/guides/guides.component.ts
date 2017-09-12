@@ -13,7 +13,6 @@ export class GuidesComponent {
     nameSearch = '';
 
     onSearchStringUpdate(searchString: string) {
-        console.log('The observed string is : ' + searchString);
         this.nameSearch = searchString;
     }
 
