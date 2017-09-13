@@ -13,8 +13,8 @@ To replicate existing functionality, the application should allow users to:
 * Search for **guides** by name :white_check_mark:
 * Filter guides by **keyword** :white_check_mark:
 * Filter keywords by starting letter :white_check_mark:
-* Find guides within a **subject grouping** 
-* Find guides related to a specific **subject**
+* Find guides within a **subject grouping** :white_check_mark:
+* Find guides related to a specific **subject** :white_check_mark:
 
 The relationship between these entities is shown in ![Image of Yaktocat](uml-class-diagram.png)
 

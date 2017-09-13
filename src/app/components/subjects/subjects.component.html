@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-starts-at-full box clr">
+        <div class="two-thirds pad-horizontal-large margin-none margin-bottom-large">
+            <div class="pad-top-medium pad-bottom-large">
+                <p>
+                    Our research guides can help you uncover the history of a place, a person or explore a particular
+                    historical subject. Each guide tells you where you can find, access and understand the relevant
+                    records.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- START LOCAL FILTERS -->
+    <div class="col starts-at-full ends-at-one-third bg-light-grey clr">
+        <div class="category-filter">
+            <div class="breather pad-top-medium">
+                <h2>
+                    Browse guides by subject</h2>
+            </div><!-- end breather -->
+        </div><!-- end category-filter -->
+        <div id="toggle-container" class="hue-grey-light pad-bottom-large">
+            <div class="category-filter-footer"></div>
+            <div class="pad-horizontal-large">
+                <div id="research-guidance-subcategories">
+                    <a *ngIf="selectedSubject" [routerLink]="['/subjects']" class="filter-button-secondary float-right">Clear</a>
+                    <div class="filter-container clr nested-subjects">
+                        <ul>
+                            <li *ngFor="let subject of (subjects | noParents) ">
+                                <a class="btn" [routerLinkActive]="['active']"
+                                   [routerLink]="['/subjects', subject.key]">{{ subject.name }}</a>
+                                <ul>
+                                    <li *ngFor="let child_subject of (subjects | parentSubject: subject.key)"><a
+                                            [routerLinkActive]="['active']"
+                                            [routerLink]="['/subjects', child_subject.key]">{{ child_subject.name }}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- end filter-container -->
+                </div><!-- end research-guidance-subcategories -->
+            </div><!-- end breather -->
+        </div>
+        <!-- end toggle container -->
+    </div><!-- end col -->
+    <!-- END LOCAL FILTERS -->
+    <!-- START RESULTS -->
+    <div id="reload-marker" class="col starts-at-full ends-at-two-thirds box margin-none clr">
+        <div class="heading-holding-banner">
+            <h2>
+                <span>
+                    <span *ngIf="!selectedSubject">Guides by subject</span>
+                    <span *ngIf="selectedSubject">Guides related to {{ getSubject(selectedSubject)}}</span>
+                </span>
+            </h2>
+        </div><!-- end heading-holding-banner -->
+        <div class="breather">
+            <h3 class="margin-none float-left width-full-to-auto">How to look for records of...</h3>
+            <div class="resource-results clr">
+                <ul>
+                    <li *ngFor="let researchGuide of (researchGuides | guidesForSubject: selectedSubject)">
+                        <app-guide-detail [guide]="researchGuide"></app-guide-detail>
+                    </li>
+                </ul>
+            </div><!-- end resource-results -->
+        </div><!-- end breather -->
+    </div><!-- end col -->
+    <!-- END RESULTS -->
+</div>
+
+
+

@@ -15,10 +15,16 @@ import { NameSearchNumberFoundPipe } from './name-search-number-found.pipe';
 import { KeywordsComponent } from './components/keywords/keywords.component';
 import { KeywordStartingLetterPipe } from './keyword-starting-letter.pipe';
 import { GuidesWithKeywordPipe } from './guides-with-keyword.pipe';
+import { SubjectsComponent } from './components/subjects/subjects.component';
+import { ParentSubjectPipe } from './parent-subject.pipe';
+import { NoParentsPipe } from './no-parents.pipe';
+import { GuidesForSubjectPipe } from './guides-for-subject.pipe';
 
 const routes: Routes = [
     {path: '', component: GuidesComponent},
-    {path: 'keywords', component: KeywordsComponent}
+    {path: 'keywords', component: KeywordsComponent},
+    {path: 'subjects', component: SubjectsComponent},
+    {path: 'subjects/:key', component: SubjectsComponent}
 ];
 
 @NgModule({
@@ -31,7 +37,11 @@ const routes: Routes = [
         NameSearchNumberFoundPipe,
         KeywordsComponent,
         KeywordStartingLetterPipe,
-        GuidesWithKeywordPipe
+        GuidesWithKeywordPipe,
+        SubjectsComponent,
+        ParentSubjectPipe,
+        NoParentsPipe,
+        GuidesForSubjectPipe
     ],
     imports: [
         BrowserModule,

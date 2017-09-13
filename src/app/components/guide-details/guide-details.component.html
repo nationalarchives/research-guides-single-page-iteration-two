@@ -5,4 +5,5 @@
         href="/help-with-your-research/research-guides-keywords/?show=keywords&amp;keyword-letter=a&amp;keyword=america#guidance"
         title="Show all research guides tagged america">america</a></span><br>
 <span class="text-smallest">Subjects:</span>
-<span class="tag" *ngFor="let category of guide.categories">{{ category }}</span>
+<span class="tag" *ngFor="let subject of guide.subjects" [routerLinkActive]="['hue-50-yellow']"
+      [routerLink]="['/subjects', subject]">{{ subject }}</span>

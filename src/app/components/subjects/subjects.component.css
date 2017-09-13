@@ -1,0 +1,18 @@
+.nested-subjects {
+    padding: 1em;
+}
+
+.nested-subjects > ul {
+    margin-top: 0em;
+    margin-bottom: 1em;
+    padding-left: 0;
+}
+
+.nested-subjects li {
+    padding-top: 0em;
+    list-style: none;
+}
+
+.active {
+    color: black;
+}
