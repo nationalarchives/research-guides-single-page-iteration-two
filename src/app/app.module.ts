@@ -8,8 +8,6 @@ import {GuidesComponent} from './components/guides/guides.component';
 import {GuideDetailsComponent} from './components/guide-details/guide-details.component';
 import {NameSearchComponent} from './components/name-search/name-search.component';
 
-import {GuideService} from './services/guide.service';
-
 import {NameSearchPipe} from './name-search.pipe';
 import { NameSearchNumberFoundPipe } from './name-search-number-found.pipe';
 import { KeywordsComponent } from './components/keywords/keywords.component';
@@ -23,6 +21,8 @@ import { GuidesForSubjectPipe } from './guides-for-subject.pipe';
 const routes: Routes = [
     {path: '', component: GuidesComponent},
     {path: 'keywords', component: KeywordsComponent},
+    {path: 'keywords/:startingLetter', component: KeywordsComponent},
+    {path: 'keywords/:startingLetter/:keyword', component: KeywordsComponent},
     {path: 'subjects', component: SubjectsComponent},
     {path: 'subjects/:key', component: SubjectsComponent}
 ];
@@ -35,20 +35,20 @@ const routes: Routes = [
         NameSearchComponent,
         NameSearchPipe,
         NameSearchNumberFoundPipe,
-        KeywordsComponent,
         KeywordStartingLetterPipe,
         GuidesWithKeywordPipe,
         SubjectsComponent,
         ParentSubjectPipe,
         NoParentsPipe,
-        GuidesForSubjectPipe
+        GuidesForSubjectPipe,
+        KeywordsComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         RouterModule.forRoot(routes)
     ],
-    providers: [GuideService],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {

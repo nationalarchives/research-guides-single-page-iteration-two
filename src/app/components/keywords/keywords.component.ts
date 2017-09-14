@@ -1,84 +1,65 @@
 import {Component, OnInit} from '@angular/core';
 
-import {GuideService} from './../../services/guide.service';
+import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 
-import {AvailableKeywordStartingLetters} from './../../available-keyword-starting-letters';
+import 'rxjs/add/operator/switchMap';
+
+import {GuideService} from '../../services/guide.service';
+import {KeywordService} from '../../services/keyword.service';
+
+import {AToZItem} from '../../aToZItem';
 
 @Component({
     selector: 'app-keywords',
     templateUrl: './keywords.component.html',
     styleUrls: ['./keywords.component.css']
 })
+
 export class KeywordsComponent implements OnInit {
 
     researchGuides;
     keywords;
-    keywordStartingLetterAvailability;
-    currentlySelectedStartingLetter;
-    currentlySelectedKeyword;
+    aToZ = [];
+    selectedKeywordStartingLetter;
+    selectedKeyword;
+    routeSubscriber;
 
     getGuides(): void {
         this.researchGuides = this.guideService.getGuides();
     }
 
-    setKeywords(): void {
+    getKeywords(): void {
+        this.keywords = this.keywordService.getKeywords();
+    }
 
-        const allKeywords = [];
+    setAToZ(): void {
+        let availableKeywords = this.keywordService.getAvailableKeywordStartingLetters();
+        'abcdefghijklmnopqrstuvwxyz'.split('').forEach((i) => {
 
-        this.researchGuides.forEach((guide) => {
-            guide.keywords.forEach((keyword) => {
-                if (allKeywords.indexOf(keyword) === -1) {
-                    allKeywords.push(keyword);
-                }
-            });
+            let item = new AToZItem();
+            item.available = (availableKeywords.indexOf(i) === -1) ? false : true;
+            item.letter = i;
+
+            this.aToZ.push(item);
+
         });
-
-        this.keywords = allKeywords.sort();
     }
 
-    setKeywordStartingLetterAvailability(): void {
-        const letters = '1abcdefghijklmnopqrstuvwxyz'.split('');
-
-        const startingLetters: AvailableKeywordStartingLetters[] = [];
-
-        letters.forEach((letter) => {
-            const startingLetter = new AvailableKeywordStartingLetters();
-            startingLetter.letter = letter;
-            startingLetter.available = false;
-            this.keywords.forEach((i) => {
-                if (startingLetter.letter === i[0]) {
-                    startingLetter.available = true;
-                }
-            });
-            startingLetters.push(startingLetter);
-        });
-
-        this.keywordStartingLetterAvailability = startingLetters;
-    }
-
-    bootstrapAStartingLetter(): void {
-        this.currentlySelectedStartingLetter = this.keywords[0][0];
-    }
-
-    selectStartingLetter(event): void {
-        event.preventDefault();
-        this.currentlySelectedStartingLetter = event.target.innerText;
-        this.currentlySelectedKeyword = undefined;
-    }
-
-    setSelectedKeyword(event): void {
-        event.preventDefault();
-        this.currentlySelectedKeyword = event.target.innerText;
-    }
-
-    constructor(private guideService: GuideService) {
+    constructor(private guideService: GuideService, private keywordService: KeywordService, private route: ActivatedRoute, private router: Router) {
         this.getGuides();
-        this.setKeywords();
-        this.setKeywordStartingLetterAvailability();
-        this.bootstrapAStartingLetter();
+        this.getKeywords();
+        this.setAToZ();
     }
 
     ngOnInit() {
+        this.routeSubscriber = this.route.params.subscribe(params => {
+            this.selectedKeywordStartingLetter = params['startingLetter'];
+            this.selectedKeyword = params['keyword'];
+        });
+    }
+
+    ngOnDestroy() {
+        this.routeSubscriber.unsubscribe();
     }
 
 }
