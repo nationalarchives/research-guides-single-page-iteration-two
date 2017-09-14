@@ -3,5 +3,5 @@
 <span class="tag" *ngFor="let keyword of guide.keywords"><a [routerLink]="['/keywords/' + keyword[0] + '/', keyword]" [routerLinkActive]="['hue-50-yellow']">{{ keyword }}</a></span>
 <br>
 <span class="text-smallest">Subjects:</span>
-<span class="tag" *ngFor="let subject of guide.subjects" [routerLinkActive]="['hue-50-yellow']"
-      [routerLink]="['/subjects', subject]">{{ subject }}</span>
+<span class="tag" *ngFor="let subject of guide.subjects"> <a [routerLinkActive]="['hue-50-yellow']"
+      [routerLink]="['/subjects', subject]">{{ subject }}</a></span>
