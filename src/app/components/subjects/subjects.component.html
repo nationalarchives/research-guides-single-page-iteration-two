@@ -61,7 +61,7 @@
             <div class="resource-results clr">
                 <ul>
                     <li *ngFor="let researchGuide of (researchGuides | guidesForSubject: selectedSubject)">
-                        <app-guide-detail [guide]="researchGuide"></app-guide-detail>
+                        <app-guide-detail [guide]="researchGuide" [selectedSubject]="selectedSubject"></app-guide-detail>
                     </li>
                 </ul>
             </div><!-- end resource-results -->

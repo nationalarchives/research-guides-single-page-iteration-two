@@ -1,7 +1,12 @@
-<a href="{{guide.guide_href}}" class="guide-heading">{{guide.name}}</a><br>
-<span class="text-smallest ">Keywords: </span>
-<span class="tag" *ngFor="let keyword of guide.keywords"><a [routerLink]="['/keywords/' + keyword[0] + '/', keyword]" [routerLinkActive]="['hue-50-yellow']">{{ keyword }}</a></span>
-<br>
-<span class="text-smallest">Subjects:</span>
-<span class="tag" *ngFor="let subject of guide.subjects"> <a [routerLinkActive]="['hue-50-yellow']"
-      [routerLink]="['/subjects', subject]">{{ subject }}</a></span>
+<div [ngClass]="{'rg-recommended': recommendedForCurrentSubject(guide.recommended_for_subject, selectedSubject)}">
+    <span *ngIf="recommendedForCurrentSubject(guide.recommended_for_subject, selectedSubject)"
+          class="rg-recommended-label">Recommended guide for {{ selectedSubject.split('-').join(' ') }}</span>
+    <a href="{{guide.guide_href}}" class="guide-heading">{{guide.name}}</a><br>
+    <span class="text-smallest ">Keywords: </span>
+    <span class="tag" *ngFor="let keyword of guide.keywords"><a
+            [routerLink]="['/keywords/' + keyword[0] + '/', keyword]" [routerLinkActive]="['hue-50-yellow']">{{ keyword }}</a></span>
+    <br>
+    <span class="text-smallest">Subjects:</span>
+    <span class="tag" *ngFor="let subject of guide.subjects"> <a [routerLinkActive]="['hue-50-yellow']"
+                                                                 [routerLink]="['/subjects', subject]">{{ subject }}</a></span>
+</div>

@@ -9,4 +9,9 @@ import {Guide} from '../../guide';
 
 export class GuideDetailsComponent {
     @Input() guide: Guide;
+    @Input() selectedSubject: string;
+
+    recommendedForCurrentSubject(subject_one: string, subject_two: string): boolean {
+        return (subject_one === subject_two);
+    }
 }
