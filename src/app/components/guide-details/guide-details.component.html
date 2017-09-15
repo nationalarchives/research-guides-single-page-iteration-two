@@ -9,4 +9,5 @@
     <span class="text-smallest">Subjects:</span>
     <span class="tag" *ngFor="let subject of guide.subjects"> <a [routerLinkActive]="['hue-50-yellow']"
                                                                  [routerLink]="['/subjects', subject]">{{ subject }}</a></span>
+    <div *ngIf="guide.data_available_on_partner" class="provider-label text-smallest">Available on:<br><div class="{{ guide.data_available_on_partner }}" title="These records are available on {{ guide.data_available_on_partner.split('-').join('') }}.co.uk"></div></div>
 </div>
