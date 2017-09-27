@@ -15,10 +15,9 @@ class Research_Guide {
 
 	public function __construct($post) {
 		$this->set_id($post);
+		$this->set_slug($post);
 		$this->set_url();
 		$this->set_title();
-		$this->set_slug($post);
-		$this->set_taxonomies();
 		$this->set_categories();
 		$this->set_tags();
 		$this->set_guidance();
@@ -31,6 +30,10 @@ class Research_Guide {
 		$this->id = $post->ID;
 	}
 
+	function set_slug ($post) {
+		$this->slug = $post->post_name;
+	}
+
 	function set_url () {
 		$this->url = get_permalink($this->get_id());
 	}
@@ -39,65 +42,70 @@ class Research_Guide {
 		$this->title = get_the_title($this->get_id());
 	}
 
-	function set_slug ($post) {
-		$this->slug = $post->post_name;
-	}
-
-	function set_taxonomies () {
-		$this->taxonomies = get_the_taxonomies($this->get_id());
-	}
-
 	function set_categories () {
-		if ($this->get_taxonomies() == null) {
-			$this->set_taxonomies();
-		}
-		$this->categories = strip_tags($this->taxonomies['category']);
+		$this->categories = $this->get_terms('category');
 	}
 
 	function set_tags () {
-		if ($this->get_taxonomies() == null) {
-			$this->set_taxonomies();
-		}
-		$this->tags = strip_tags( $this->taxonomies['post_tag'] );
+		$this->tags = $this->get_terms('post_tag');
 	}
 
 	function set_guidance () {
-		if ($this->get_taxonomies() == null) {
-			$this->set_taxonomies();
-		}
-		$this->guidance = strip_tags($this->taxonomies['guidance']);
+		$this->guidance = $this->get_terms('guidance');
 	}
 
 	function set_recommended () {
-		$this->recommended = (strpos($this->guidance, 'Recommended')) ? 'true' : 'false';
+		$this->recommended = (strpos($this->get_guidance_string(), 'recommended')) ? 'true' : 'false';
 	}
 
 	function set_online () {
-		$this->online = strpos($this->guidance, 'All online') ? 'true' : 'false';
+		$this->online = strpos($this->get_guidance_string(), 'online') ? 'true' : 'false';
 	}
 
 	function set_partners () {
-		$partners = array(
-			"Findmypast.co.uk" => "find-my-past",
-			"Ancestry.co.uk" => "ancestry"
-		);
-		foreach ($partners as $key => $partner) {
-			if ( strpos( $this->get_categories(), $key ) ) {
-				$this->partners .=  $partner . " ";
+		$partners = array();
+		$potential_partners = array( "find-my-past", "ancestry" );
+		foreach ($potential_partners as $potential_partner) {
+			foreach ($this->get_categories() as $category) {
+				if ($category == $potential_partner) {
+					$partners[] =  $potential_partner;
+				}
 			}
 		}
-		if ( $this->get_partners() == null){
-			$this->partners = 'false';
-		}
+		$this->partners = $partners;
 	}
 
-	function get_id () {return $this->id;}
+	function get_id () {
+		return $this->id;
+	}
 
-	function get_taxonomies () {return $this->taxonomies;}
+	function get_categories () {
+		return $this->categories;
+	}
 
-	function get_categories () {return $this->categories;}
+	function get_tags_string () {
+		return implode(" ", $this->tags);
+	}
 
-	function get_partners () {return $this->partners;}
+	function get_guidance_string () {
+		return implode(" ", $this->guidance);
+	}
+
+	function get_partners_string () {
+		if ( count($this->partners) < 1 ){
+			return $this->partners = 'false';
+		}
+		return implode(" ", $this->partners);
+	}
+
+	function get_terms($taxonomy) {
+		$taxonomy_array = array();
+		$all_taxonomies = get_the_terms($this->get_id(),$taxonomy);
+		foreach ($all_taxonomies as $single_taxonomy) {
+			$taxonomy_array[] = $single_taxonomy->slug;
+		}
+		return $taxonomy_array;
+	}
 
 	function print_html_structure () {
 		$html = '<div data-name="%s"
@@ -117,7 +125,7 @@ class Research_Guide {
 					</div>
 					';
 
-		$compiled = sprintf( $html, $this->title, $this->guidance, $this->recommended, $this->tags, $this->online, $this->url, $this->partners, $this->slug, $this->url, $this->title);
+		$compiled = sprintf( $html, $this->title, $this->get_guidance_string(), $this->recommended, $this->get_tags_string(), $this->online, $this->url, $this->get_partners_string(), $this->slug, $this->url, $this->title);
 
 		echo $compiled;
 	}
@@ -147,10 +155,12 @@ function get_research_guide_array ($category) {
 	return $research_guide_array;
 }
 
-
 echo "<div class='research-guides-from-html'>";
+
 $research_guide_array = get_research_guide_array('records-2');
+
 foreach ($research_guide_array as $research_guide) {
 	$research_guide->print_html_structure();
 }
+
 echo "</div>";
