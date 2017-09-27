@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { Guide } from '../guide';
+import {Guide} from '../guide';
 
-import { RESEARCH_GUIDES } from './mock-guides';
+import {ResearchGuidesFromDOM} from './research-guides-from-dom';
 
 @Injectable()
 export class GuideService {
 
-  getGuides(): Guide[] {
-    return RESEARCH_GUIDES;
-  }
+    getGuides(): Guide[] {
+        const ALL_GUIDES = new ResearchGuidesFromDOM('.research-guide-links', 'div[class="research-guide"]');
+        return ALL_GUIDES.getGuides();
+    }
 
 }

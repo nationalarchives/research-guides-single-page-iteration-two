@@ -18,6 +18,10 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+        // This is a rudimentary implementation for prototype purposes only. The actual tests
+        // would need to ensure that Angular, not just JS, was available.
+        let progressivelyEnhancedContent = document.getElementById('progressively-enhanced');
+        progressivelyEnhancedContent.style.display = 'none';
     }
 
 }

@@ -1,3 +1,14 @@
 .guide-heading {
     font-size: 1.25em;
 }
+
+.guide-detail {
+    position: relative;
+}
+
+.provider-label {
+    border: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+}

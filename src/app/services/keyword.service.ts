@@ -1,14 +1,16 @@
 import {Injectable} from '@angular/core';
 
-import {RESEARCH_GUIDES} from './mock-guides';
+import {ResearchGuidesFromDOM} from './research-guides-from-dom';
 
 @Injectable()
 export class KeywordService {
 
-    getKeywords(): string[] {
-        let keywords = [];
+    research_guides;
 
-        RESEARCH_GUIDES.forEach((guide) => {
+    getKeywords(): string[] {
+        const keywords = [];
+
+        this.research_guides.forEach((guide) => {
             guide.keywords.forEach((keyword) => {
                 if (keywords.indexOf(keyword) === -1) {
                     keywords.push(keyword);
@@ -21,7 +23,7 @@ export class KeywordService {
 
     getAvailableKeywordStartingLetters(): string[] {
 
-        let availableKeywordStartingLetters = [];
+        const availableKeywordStartingLetters = [];
 
         this.getKeywords().forEach((word) => {
             let letter = word[0];
@@ -31,5 +33,11 @@ export class KeywordService {
         });
 
         return availableKeywordStartingLetters.sort();
+    }
+
+
+    constructor() {
+        const ALL_GUIDES = new ResearchGuidesFromDOM('.research-guide-links', 'div[class="research-guide"]');
+        this.research_guides = ALL_GUIDES.getGuides();
     }
 }

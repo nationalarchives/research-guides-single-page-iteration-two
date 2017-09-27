@@ -10,7 +10,7 @@ export class NoParentsPipe implements PipeTransform {
   transform(allSubjects: Subject[]) {
     return allSubjects.filter(function (subject) {
 
-      if (subject.parent === '') {
+      if (!!subject.parent) {
         return subject;
       }
 
