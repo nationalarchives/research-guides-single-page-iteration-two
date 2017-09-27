@@ -54,7 +54,13 @@ class Research_Guide {
 	}
 
 	function set_recommended () {
-		$this->recommended = (strpos($this->get_guidance_string(), 'recommended')) ? 'true' : 'false';
+		$recommended = array();
+		foreach ($this->guidance as $guidance_category) {
+		    if (strpos($guidance_category, "recommended") !== false) {
+		        $recommended[] = $guidance_category;
+            }
+        }
+        $this->recommended = $recommended;
 	}
 
 	function set_online () {
@@ -97,6 +103,13 @@ class Research_Guide {
 		return implode(" ", $this->partners);
 	}
 
+	function get_recommended_string () {
+        if ( count($this->recommended) < 1 ){
+            return $this->recommended = 'false';
+        }
+        return implode(" ", $this->recommended);
+    }
+
 	function get_terms($taxonomy) {
 		$taxonomy_array = array();
 		$all_taxonomies = get_the_terms($this->get_id(),$taxonomy);
@@ -124,7 +137,7 @@ class Research_Guide {
 					</div>
 					';
 
-		$compiled = sprintf( $html, $this->title, $this->get_guidance_string(), $this->recommended, $this->get_tags_string(), $this->online, $this->url, $this->get_partners_string(), $this->slug, $this->url, $this->title);
+		$compiled = sprintf( $html, $this->title, $this->get_guidance_string(), $this->get_recommended_string(), $this->get_tags_string(), $this->online, $this->url, $this->get_partners_string(), $this->slug, $this->url, $this->title);
 
 		echo $compiled;
 	}
