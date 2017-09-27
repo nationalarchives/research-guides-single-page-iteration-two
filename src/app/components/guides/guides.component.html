@@ -56,7 +56,7 @@
             <div class="resource-results clr">
                 <!-- results go here -->
                 <ul>
-                    <li *ngFor="let researchGuide of (researchGuides | nameSearchPipe: nameSearch)">
+                    <li *ngFor="let researchGuide of (researchGuides | nameSearchPipe: nameSearch | recommendedFirst)">
                         <app-guide-detail [guide]="researchGuide"></app-guide-detail>
                     </li>
                 </ul>

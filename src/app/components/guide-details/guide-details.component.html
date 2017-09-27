@@ -1,5 +1,5 @@
-<div class="guide-detail" [ngClass]="{'rg-recommended': (guide.recommended_for_category !== 'false')}">
-    <span *ngIf="(guide.recommended_for_category !== 'false')"
+<div class="guide-detail" [ngClass]="{'rg-recommended': (guide.recommended_for_subject !== 'false')}">
+    <span *ngIf="(guide.recommended_for_subject !== 'false')"
           class="rg-recommended-label">Recommended guide</span>
     <a href="{{guide.guide_href}}" class="guide-heading">{{guide.name}}</a><br>
     <span class="text-smallest ">Keywords: </span>

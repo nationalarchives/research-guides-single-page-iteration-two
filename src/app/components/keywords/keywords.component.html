@@ -36,7 +36,7 @@
     <div class="resource-results clr">
       <!-- results go here -->
       <ul>
-        <li *ngFor="let researchGuide of (researchGuides | guidesWithKeyword: selectedKeyword)">
+        <li *ngFor="let researchGuide of (researchGuides | guidesWithKeyword: selectedKeyword | recommendedFirst)">
           <app-guide-detail [guide]="researchGuide"></app-guide-detail>
         </li>
       </ul>

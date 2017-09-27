@@ -17,6 +17,7 @@ import { SubjectsComponent } from './components/subjects/subjects.component';
 import { ParentSubjectPipe } from './parent-subject.pipe';
 import { NoParentsPipe } from './no-parents.pipe';
 import { GuidesForSubjectPipe } from './guides-for-subject.pipe';
+import { RecommendedFirstPipe } from './recommended-first.pipe';
 
 const routes: Routes = [
     {path: '', component: GuidesComponent},
@@ -41,7 +42,8 @@ const routes: Routes = [
         ParentSubjectPipe,
         NoParentsPipe,
         GuidesForSubjectPipe,
-        KeywordsComponent
+        KeywordsComponent,
+        RecommendedFirstPipe
     ],
     imports: [
         BrowserModule,

@@ -35,7 +35,7 @@ export class ResearchGuidesFromDOM {
             JSONOutput.push({
                 name: i.getAttribute('data-name'),
                 subjects: i.getAttribute('data-categories').split(' '),
-                recommended_for_category: i.getAttribute('data-recommended-guide-for-category'),
+                recommended_for_subject: i.getAttribute('data-recommended-guide-for-category'),
                 keywords: i.getAttribute('data-keywords').split(' '),
                 all_records_available_online: i.getAttribute('data-all-records-available-online'),
                 guide_href: i.getAttribute('data-guide-href'),

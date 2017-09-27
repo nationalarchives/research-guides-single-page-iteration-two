@@ -60,7 +60,7 @@
             <h3 class="margin-none float-left width-full-to-auto">How to look for records of...</h3>
             <div class="resource-results clr">
                 <ul>
-                    <li *ngFor="let researchGuide of (researchGuides | guidesForSubject: selectedSubject)">
+                    <li *ngFor="let researchGuide of (researchGuides | guidesForSubject: selectedSubject | recommendedFirst)">
                         <app-guide-detail [guide]="researchGuide" [selectedSubject]="selectedSubject"></app-guide-detail>
                     </li>
                 </ul>
