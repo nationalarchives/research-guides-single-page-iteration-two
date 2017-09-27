@@ -1,7 +1,6 @@
 <?php
 
 class Research_Guide {
-	private $taxonomies;
 	private $categories;
 	private $tags;
 	private $guidance;
