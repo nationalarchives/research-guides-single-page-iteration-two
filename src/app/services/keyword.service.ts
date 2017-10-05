@@ -37,7 +37,7 @@ export class KeywordService {
 
 
     constructor() {
-        const ALL_GUIDES = new ResearchGuidesFromDOM('.research-guide-links', 'div[class="research-guide"]');
+        const ALL_GUIDES = new ResearchGuidesFromDOM('.research-guide-links', 'li[class="research-guide"]');
         this.research_guides = ALL_GUIDES.getGuides();
     }
 }

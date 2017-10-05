@@ -8,7 +8,7 @@ import {ResearchGuidesFromDOM} from './research-guides-from-dom';
 export class GuideService {
 
     getGuides(): Guide[] {
-        const ALL_GUIDES = new ResearchGuidesFromDOM('.research-guide-links', 'div[class="research-guide"]');
+        const ALL_GUIDES = new ResearchGuidesFromDOM('.research-guide-links', 'li[class="research-guide"]');
         return ALL_GUIDES.getGuides();
     }
 

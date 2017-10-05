@@ -26,7 +26,7 @@ export class SubjectService {
   }
 
   constructor() {
-    const ALL_GUIDES = new ResearchGuidesFromDOM('.research-guide-links', 'div[class="research-guide"]');
+    const ALL_GUIDES = new ResearchGuidesFromDOM('.research-guide-links', 'li[class="research-guide"]');
     this.subjects = ALL_GUIDES.getSubjects();
   }
 }
