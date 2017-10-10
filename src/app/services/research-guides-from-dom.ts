@@ -10,39 +10,47 @@ export class ResearchGuidesFromDOM {
 
     populateSubjects(items, JSONOutput, subCategories) {
 
-        items.forEach(function (i) {
+        for (var i = 0; i < items.length; i++) {
+            var item = items[ i ];
 
             JSONOutput.push({
-                name: i.getElementsByTagName('a')[0].innerText,
-                key: i.getElementsByTagName('a')[0].href.split('#')[1],
+                name: item.getElementsByTagName('a')[ 0 ].innerText,
+                key: item.getElementsByTagName('a')[ 0 ].href.split('#')[ 1 ],
                 parent: false
             });
 
-            subCategories = i.querySelectorAll('li');
+            subCategories = item.querySelectorAll('li');
 
-            subCategories.forEach(function (j) {
+            for (var j = 0; j < subCategories.length; j++) {
+                var subcategory = subCategories[ j ];
+
                 JSONOutput.push({
-                    name: j.innerText,
-                    key: j.getElementsByTagName('a')[0].href.split('#')[1],
-                    parent: i.getElementsByTagName('a')[0].href.split('#')[1]
+                    name: subcategory.innerText,
+                    key: subcategory.getElementsByTagName('a')[ 0 ].href.split('#')[ 1 ],
+                    parent: item.getElementsByTagName('a')[ 0 ].href.split('#')[ 1 ]
                 });
-            });
-        });
+            }
+
+        }
     }
 
     populateGuides(items, JSONOutput) {
-        items.forEach(function (i) {
+
+        for (var i = 0; i < items.length; i++) {
+            var item = items[ i ];
+
             JSONOutput.push({
-                name: i.getAttribute('data-name'),
-                subjects: i.getAttribute('data-categories').split(' '),
-                recommended_for_subject: i.getAttribute('data-recommended-guide-for-category'),
-                keywords: i.getAttribute('data-keywords').split(' '),
-                all_records_available_online: i.getAttribute('data-all-records-available-online'),
-                guide_href: i.getAttribute('data-guide-href'),
-                data_available_on_partner: (i.getAttribute('data-available-on-partner') === 'false') ? false : i.getAttribute('data-available-on-partner'),
-                id: i.getAttribute('id')
+                name: item.getAttribute('data-name'),
+                subjects: item.getAttribute('data-categories').split(' '),
+                recommended_for_subject: item.getAttribute('data-recommended-guide-for-category'),
+                keywords: item.getAttribute('data-keywords').split(' '),
+                all_records_available_online: item.getAttribute('data-all-records-available-online'),
+                guide_href: item.getAttribute('data-guide-href'),
+                data_available_on_partner: (item.getAttribute('data-available-on-partner') === 'false') ? false : item.getAttribute('data-available-on-partner'),
+                id: item.getAttribute('id')
             });
-        });
+        }
+
     }
 
     getSubjects() {
