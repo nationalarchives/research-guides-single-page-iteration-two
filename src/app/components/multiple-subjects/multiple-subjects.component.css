@@ -1,0 +1,29 @@
+.category-checkboxes {
+    font-size: 0.8em;
+    background-color: #fff;
+    padding-top: 1.5em;
+}
+
+.category-checkboxes li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 0.2em;
+}
+
+.category-checkboxes input {
+    display: none;
+}
+
+.category-checkboxes label {
+    padding: 0.2em 0.6em;
+    background-color: #EEE;
+}
+
+.category-checkboxes label:hover {
+    cursor: pointer;
+}
+
+.category-checkboxes input:checked + label {
+    background-color: #008484;
+    color: white;
+}

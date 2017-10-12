@@ -1,12 +1,39 @@
 export class ResearchGuidesFromDOM {
 
     subjects;
+    categories = [];
     guides;
     selector;
     selectorMatchInDOM;
     selectorChildren;
     selectorGuides;
     selectorGuidesMatchInDOM;
+
+    populateCategories(guides) {
+
+        let allCategoriesWithDuplicates = [];
+
+        for (let i = 0; i < guides.length; i++) {
+
+            let categories = guides[ i ].getAttribute('data-categories');
+            let categoriesAsArray = categories.split(' ');
+
+            allCategoriesWithDuplicates = allCategoriesWithDuplicates.concat(categoriesAsArray);
+        }
+
+        let allCategoriesDeDuplicated: any = new Set(allCategoriesWithDuplicates);
+
+        for (let category of Array.from(allCategoriesDeDuplicated.values())) {
+
+            if (category !== '') {
+                this.categories.push({
+                    name: category,
+                    key: category,
+                    checked: false
+                })
+            }
+        }
+    }
 
     populateSubjects(items, JSONOutput, subCategories) {
 
@@ -53,6 +80,10 @@ export class ResearchGuidesFromDOM {
 
     }
 
+    getCategories() {
+        return this.categories;
+    }
+
     getSubjects() {
         return this.subjects;
     }
@@ -76,9 +107,16 @@ export class ResearchGuidesFromDOM {
         this.populateGuides(this.selectorGuidesMatchInDOM, this.guides);
     }
 
+    setCategories(guidesSelector) {
+        this.selectorGuides = guidesSelector;
+        this.selectorGuidesMatchInDOM = document.querySelectorAll(this.selectorGuides);
+        this.populateCategories(this.selectorGuidesMatchInDOM);
+    }
+
     constructor(subjectSelector, guidesSelector) {
         this.setSubjects(subjectSelector);
         this.setGuides(guidesSelector);
+        this.setCategories(guidesSelector);
     }
 }
 

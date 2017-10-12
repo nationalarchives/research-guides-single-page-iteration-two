@@ -30,11 +30,11 @@
                         <ul>
                             <li *ngFor="let subject of (subjects | noParents) ">
                                 <a class="btn" [routerLinkActive]="['active']"
-                                   [routerLink]="['/subjects', subject.key]">{{ subject.name }}</a>
+                                   [routerLink]="['/subject', subject.key]">{{ subject.name }}</a>
                                 <ul>
                                     <li *ngFor="let child_subject of (subjects | parentSubject: subject.key)"><a
                                             [routerLinkActive]="['active']"
-                                            [routerLink]="['/subjects', child_subject.key]">{{ child_subject.name }}</a>
+                                            [routerLink]="['/subject', child_subject.key]">{{ child_subject.name }}</a>
                                     </li>
                                 </ul>
                             </li>
