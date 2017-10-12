@@ -3,12 +3,13 @@ import {Component, OnInit} from '@angular/core';
 import {GuideService} from '../../services/guide.service';
 import {SubjectService} from '../../services/subject.service';
 import {KeywordService} from '../../services/keyword.service';
+import {MultipleSubjectsService} from '../../services/multiple-subjects.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    providers: [GuideService, SubjectService, KeywordService]
+    providers: [GuideService, SubjectService, KeywordService, MultipleSubjectsService]
 })
 
 export class AppComponent implements OnInit {
