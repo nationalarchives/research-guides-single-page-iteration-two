@@ -1,0 +1,11 @@
+console.assert(x.selector === ".research-guide-links", "Selector not found");
+console.assert(x.selectorMatchInDOM.constructor.prototype.toString() === "[object NodeList]", "selectorMatchInDOM does not equal a NodeList");
+console.assert(Array.isArray(x.subjects), "outputArray is not an array, it is a ");
+console.assert(x.subjects.length > 0, "Output array length less than 1");
+console.assert(Array.isArray(x.selectorChildren), "selectorChildren is not an array");
+console.assert(x.selectorGuides === "div[class='research-guide']", "No research guides found");
+console.assert(x.selectorGuidesMatchInDOM.constructor.prototype.toString() === "[object NodeList]", "selecterGuidesMatchInDOM does not equal a NodeList");
+console.assert(Array.isArray(x.guides), "outputArrayGuides is not an array.");
+console.assert(x.guides.length > 0, "Output array guides is less than 1");
+console.log(JSON.stringify(x.getSubjects(), null, 2));
+console.log(JSON.stringify(x.getGuides(), null, 2));
